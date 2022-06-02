@@ -1,0 +1,21 @@
+<mat-card *ngIf="product" class="mt">
+    <mat-card-header>
+        <mat-card-title>{{ product?.name }}</mat-card-title>
+        <mat-card-subtitle>Price: {{ product?.price }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <img mat-card-image [src]="imageUrl" />
+    <p>Price: {{ product?.price }}</p>
+    <mat-card-actions>
+        <button mat-button color="primary" class="snipcart-add-item" [attr.data-item-id]="product?.id"
+            [attr.data-item-price]="product?.price" [attr.data-item-url]="'product/' + product?.id"
+            [attr.data-item-image]="imageUrl" [attr.data-item-name]="product?.name">
+            Add to cart
+        </button>
+    </mat-card-actions>
+</mat-card>
+
+<div [hidden]="product || errMess">
+    <mat-spinner></mat-spinner>
+    <h4>Cargando . . . </h4>
+</div>
