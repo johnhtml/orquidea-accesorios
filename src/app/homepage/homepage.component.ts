@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomepageComponent implements OnInit {
 
   title = 'Orquidea accesorios';
-  subtitle = '¿Cuál es tu favorito?';
+  subtitle = '¿Cuál es tu estilo?';
 
   constructor() { }
 

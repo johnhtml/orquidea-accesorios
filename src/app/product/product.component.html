@@ -1,4 +1,7 @@
-<div [routerLink]="'product/' + product?.id" class="product-card">
-    <h2>{{ product?.name }}</h2>
-    <img [src]="imageUrl" class="mat-card-image"/>
-</div>
+<mat-card [routerLink]="'product/' + product?.id" class="product-card" fxLayout="column" fxLayoutAlign="center center">
+    <mat-card-header>
+        <mat-card-title>{{ product?.name }}</mat-card-title>
+    </mat-card-header>
+    <img [src]="imageUrl" class="mat-card-image" />
+    <p>Precio: {{ product?.price }}</p>
+</mat-card>

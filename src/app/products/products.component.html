@@ -1,14 +1,16 @@
-<div fxFlex>
+<div>
     <div *ngIf="products">
-        <mat-grid-list cols="2">
-            <mat-grid-tile *ngFor="let p of products">
+        <mat-card fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="0px" class="general-card-products">
+            <div *ngFor="let p of products" class="card-product">
                 <app-product [product]="p">
                 </app-product>
-            </mat-grid-tile>
-        </mat-grid-list>
+            </div>
+        </mat-card>
+        <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+        </mat-paginator>
     </div>
 
-    <div *ngIf="errMess">
+    <div *ngIf="errMess" fxLayout="row" fxLayoutAlign="center center">
         <mat-card class="example-card">
             <mat-card-header>
                 <mat-card-title>Error</mat-card-title>
@@ -21,10 +23,13 @@
         </mat-card>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxLayout="row" fxLayoutAlign="center center" class="loading-component">
         <div [hidden]="products || errMess">
             <mat-spinner></mat-spinner>
             <h4>Cargando . . . </h4>
         </div>
     </div>
+
+
+
 </div>

@@ -11,6 +11,7 @@ import { ProductService } from '../services/product.service';
 export class ProductsComponent implements OnInit {
   products!: Product[];
   errMess!: string;
+  breakpoint!: number;
 
   constructor(
     private productService: ProductService
@@ -27,6 +28,11 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.getProducts();
+    this.breakpoint = (window.innerWidth <= 900) ? 1 : 2;
   }
 
+
+  onResize(event: any) {
+    this.breakpoint = (event.target.innerWidth <= 900) ? 1 : 2;
+  }
 }

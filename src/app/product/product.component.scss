@@ -2,8 +2,7 @@
     background-color: #FDF6EB;
     color: black;
     font-family: 'Pacifico', cursive;
-    height: 100%;
-    width: 80%;
+    justify-content: center;
 }
 
 .product-card:hover {
@@ -11,6 +10,7 @@
 }
 
 .mat-card-image {
-    object-fit: contain;
-    max-height: 290px;
+    object-fit: cover;
+    max-height: 250px;
+    width: 95%;
 }

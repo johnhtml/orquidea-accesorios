@@ -1,3 +1,13 @@
-.mt {
+.product-page {
+    flex-direction: row;
+    justify-content: center;
+}
+
+.product-page-cart-detail {
     margin-top: 50px;
+    max-width: 300px;
+}
+
+.loading-component {
+    margin-top: 2em;
 }

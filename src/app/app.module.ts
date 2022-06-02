@@ -18,6 +18,10 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatChipsModule } from '@angular/material/chips';
 
 import "hammerjs";
 
@@ -41,6 +45,10 @@ import "hammerjs";
     MatProgressSpinnerModule,
     MatButtonModule,
     MatCardModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatChipsModule,
     HttpClientModule
   ],
   providers: [],
