@@ -18,12 +18,12 @@ export class ProductService {
   ) { }
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(baseURL + 'products')
+    return this.http.get<Product[]>(baseURL + 'productsserver')
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
   getProduct(id: number): Observable<Product | undefined> {
-    return this.http.get<Product>(baseURL + 'products/' + id)
+    return this.http.get<Product>(baseURL + 'productsserver/' + id)
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 }

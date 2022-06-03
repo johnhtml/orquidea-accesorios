@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
     this.productService
       .getProducts().
       subscribe(
-        products => this.products = products,
+        products => {this.products = products},
         errmess => this.errMess = <any>errmess
       )
   }

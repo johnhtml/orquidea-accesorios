@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Flavor } from '../core/flavor';
+import { Material } from '../core/materials';
 import { Product } from '../core/product';
 import { Size } from '../core/size';
 import { ProductService } from '../services/product.service';
-import { SelectedProductAttributes } from '../core/selectedProductAttributes'; 
+import { SelectedProductAttributes } from '../core/selectedProductAttributes';
 
 @Component({
   selector: 'app-product-page',
@@ -16,13 +16,13 @@ export class ProductPageComponent implements OnInit {
   @Input() product: Product | undefined;
   errMess!: string;
   selectedAttributes: SelectedProductAttributes = {
-    flavor: undefined,
+    material: undefined,
     size: undefined,
   };
 
   /*
   selectedAttributes: SelectedProductAttributes = {
-    flavor: undefined,
+    material: undefined,
     size: undefined,
   };*/
 
@@ -47,9 +47,9 @@ export class ProductPageComponent implements OnInit {
       );
   }
 
-  get flavorOptions(): string {
+  get materialOptions(): string {
     return (
-      this.product?.flavors?.map((flavor) => flavor.name).join('|') ?? ''
+      this.product?.materials?.map((material) => material.name).join('|') ?? ''
     );
   }
 
@@ -57,29 +57,29 @@ export class ProductPageComponent implements OnInit {
     return this.product?.sizes?.join('|') ?? '';
   }
 
-  setImageUrl(flavor: Flavor): void {
-    const flavorImageUrl = this.product?.imageUrls.find((url) =>
-      url.includes(flavor.name)
+  setImageUrl(material: Material): void {
+    const materialImageUrl = this.product?.imageUrls.find((url) =>
+      url.includes(material.name)
     );
-    if (!flavorImageUrl) {
-      throw Error(`No flavor for ${flavor.name} value`); // TODO refactor for setter
+    if (!materialImageUrl) {
+      throw Error(`No material for ${material.name} value`); // TODO refactor for setter
     }
-    this.imageUrl = flavorImageUrl;
+    this.imageUrl = materialImageUrl;
   }
 
-  public updateSelectedProductAttributes(flavor: Flavor | undefined, size: Size | undefined) {
-    this.setSelectedAttributes(flavor ?? { name: "none", color: "#DDD" }, size ?? Size.SMALL);
-    if (this.selectedAttributes.flavor) {
-      //this.setImageUrl(this.selectedAttributes.flavor);
+  public updateSelectedProductAttributes(material: Material | undefined, size: Size | undefined) {
+    this.setSelectedAttributes(material ?? { name: "none", color: "#DDD" }, size ?? Size.SMALL);
+    if (this.selectedAttributes.material) {
+      //this.setImageUrl(this.selectedAttributes.material);
     }
   }
 
   private setSelectedAttributes(
-    flavor: Flavor | undefined,
+    material: Material | undefined,
     size: Size | undefined
   ) {
     this.selectedAttributes = {
-      flavor: flavor,
+      material: material,
       size: size,
     };
   }

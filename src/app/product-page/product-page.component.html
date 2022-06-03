@@ -18,7 +18,7 @@
               <mat-select
                 (selectionChange)="
                   updateSelectedProductAttributes(
-                    this.selectedAttributes?.flavor,
+                    this.selectedAttributes?.material,
                     $event.value
                   )
                 "
@@ -30,19 +30,19 @@
               </mat-select>
             </mat-form-field>
             <h4>Selecciona tu color:</h4>
-            <mat-chip-list aria-label="Flavors selection">
+            <mat-chip-list aria-label="Materials selection">
               <mat-chip
-                *ngFor="let flavor of product?.flavors"
+                *ngFor="let material of product?.materials"
                 class="chip mat-elevation-6"
-                [style.background-color]="flavor.color"
+                [style.background-color]="material.color"
                 (click)="
                   updateSelectedProductAttributes(
-                    flavor,
+                    material,
                     this.selectedAttributes?.size
                   )
                 "
               >
-                {{ flavor.name }}
+                {{ material.name }}
               </mat-chip>
             </mat-chip-list>
           </mat-card-content>

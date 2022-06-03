@@ -1,7 +1,7 @@
-import { Flavor } from "./flavor";
+import { Material } from "./materials";
 import { Size } from "./size";
 
 export interface SelectedProductAttributes {
-    flavor: Flavor | undefined;
+    material: Material | undefined;
     size: Size | undefined;
 }
