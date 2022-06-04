@@ -1,16 +1,22 @@
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-    host: process.env.MYSQL_HOST || 'localhost',
-    user: process.env.MYSQL_USER || 'root',
-    password: process.env.MYSQL_PASSWORD || 'Password123#@!',
-    database: process.env.MYSQL_DATABASE || 'orquidea_accesorios'
+  host: process.env.MYSQL_HOST || 'localhost',
+  user: process.env.MYSQL_USER || 'root',
+  password: process.env.MYSQL_PASSWORD || 'Password123#@!',
+  database: process.env.MYSQL_DATABASE || 'orquidea_accesorios'
 });
+
+/*
+ejecutar para iniciar el servicio
+sudo service mysql start //habilitar permisos
+sudo mysql -u root -p //abrir el shell de mysql
+*/
 
 connection.connect();
 
 function getProducts(callback) {
-    const query = `
+  const query = `
     SELECT 
 
     products.product_id, products.name,
@@ -42,20 +48,20 @@ function getProducts(callback) {
     GROUP BY products.product_id;
     `;
 
-    connection.query(query, (error, results) => {
-        if (error) {
-            callback(error);
-            return;
-        };
-        //caso es exitosa
-        callback(null, results);
-        ;
-    });
+  connection.query(query, (error, results) => {
+    if (error) {
+      callback(error);
+      return;
+    };
+    //caso es exitosa
+    callback(null, results);
+    ;
+  });
 }
 
 function getProduct(id, callback) {
-    //prevent mysql injection
-    let query = 
+  //prevent mysql injection
+  let query =
     `
     SELECT 
 
@@ -93,15 +99,15 @@ function getProduct(id, callback) {
     
     `
 
-    connection.query(query, (error, results) => {
-        if (error) {
-            callback(error);
-            return;
-        };
-        //caso es exitosa
-        callback(null, results);
-        ;
-    });
+  connection.query(query, (error, results) => {
+    if (error) {
+      callback(error);
+      return;
+    };
+    //caso es exitosa
+    callback(null, results);
+    ;
+  });
 }
 
 exports.getProducts = getProducts;

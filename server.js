@@ -3,7 +3,8 @@ const path = require('path');
 
 const app = express();
 
-const database = require('./database');
+//const database = require('./database');
+const products = require('./src/app/mock-products');
 
 //servir automáticamente todos los archivos dentro de esta carpeta
 app.use(express.static(__dirname + '/dist/orquidea-accesorios'));
@@ -17,7 +18,7 @@ app.get(
             ));
     }
 );
-
+/* VERSION ABLE TO INTERACT WITH MYSQL
 app.get(
     '/productsserver',
     (req, res) => {
@@ -80,6 +81,23 @@ app.get(
             });
     }
 );
+*/
+
+// VERSION WITH HARDCODED DATABASE
+app.get(
+    '/productsserver',
+    (req, res) => {
+        res.send(products.products);
+    }
+);
+
+app.get(
+    '/productsserver/:id',
+    (req, res) => {
+        res.send(products.products.filter(product => product["id"].toString() === req.params.id)[0]);
+    }
+);
+
 
 app.get(
     '*',
@@ -89,7 +107,7 @@ app.get(
 );
 
 
-/* LAST VERSION
+/* PREVIOUS VERSION: VERSION WITHOUT MYSQL
 app.get(
     '/*',
     function (req, res) {
