@@ -60,7 +60,7 @@ function getProducts(callback) {
 }
 
 function getProduct(id, callback) {
-  //prevent mysql injection
+  //prevent mysql injection with mysql.escape() method
   let query =
     `
     SELECT 
